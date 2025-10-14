@@ -51,7 +51,7 @@ sudo archinstall --dry-run
     ]
 }
 ```
-#### Change the pasword (hash)
+#### Changing the pasword (hash)
 
 If you wish to change the password for root or any of the users for future installations you can manually create the hashed passwords with one of the following commands:
 
@@ -70,9 +70,58 @@ shadowhash <PASSWORD>
 ### user_configuration.json
 
 The user_configuration.json file saved during the first step is a representation of that specific installation.
+Some of the saved configurations you might want to change if you wish to use the user_configuartion.json for future new installations.
 
+#### Disk configuration
+
+Likely the most interesting part of the user_configuration.json file is the disk configuration.
+Each system that you install Arch Linux on will likely have a different 'disk' configuration.
+
+Here are some recommendations on how the confiure the 'disk' and to create a more 'useable' version:
+
+Example section for 'disk_config' direct from a 'saved' configuration:
 ```json
-
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": {
+                "type": "Timeshift"
+            }
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "f8b6965c-5629-4696-a95e-c1cbede3bd85",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
 ```
 
 ## Usage (with configuration files)
