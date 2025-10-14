@@ -29,12 +29,14 @@ sudo archinstall --dry-run
 
 ## Modifying the 'base' configuration files.
 
+### user_credentials.json
+
 > [!CAUTION]
 > The user_crendetial.json file will save your disk encryption password in plain text.
 > There is no possibility to hash the LUKS password in the user_credential.json file.
 > Therefor it is best to change the 'encryption_password' to an empty string (""). This will cause 'archinstll' to prompt you for a LUKS password during installation.
 
-Example of user_credentials:
+#### Example of user_credentials.json:
 ```json
 {
     "encryption_password": "",
@@ -49,6 +51,7 @@ Example of user_credentials:
     ]
 }
 ```
+#### Change the pasword (hash)
 
 If you wish to change the password for root or any of the users for future installations you can manually create the hashed passwords with one of the following commands:
 
@@ -63,6 +66,8 @@ sudo pacman -S pipx
 pipx install shadowhash
 shadowhash <PASSWORD>
 ```
+
+### user_configuration.json
 
 The user_configuration.json file saved during the first step is a representation of that specific installation.
 
