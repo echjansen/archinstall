@@ -1,6 +1,9 @@
 # Archinstall
 Installing Arch Linux using the live ISO provided 'archinstall' package
 
+> [!NOTE]
+> These instructions and examples asume you are using version 3.0 of the 'archinstall' application.
+
 Used with `archinstall`'s *guided* installation script. See [Guided Installation](https://archinstall.archlinux.page/installing/guided.html#guided-installation) for detailed explanation of how to make and use configuration files.
 
 ## How to create the 'base' configuration files
