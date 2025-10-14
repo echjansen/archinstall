@@ -122,7 +122,77 @@ Example section for 'disk_config' direct from a 'saved' configuration:
                         "status": "create",
                         "type": "primary"
                     },
+                    {
+                        "btrfs": [
+                            {
+                                "mountpoint": "/",
+                                "name": "@"
+                            },
+                            {
+                                "mountpoint": "/home",
+                                "name": "@home"
+                            },
+                            {
+                                "mountpoint": "/var/log",
+                                "name": "@log"
+                            },
+                            {
+                                "mountpoint": "/var/cache/pacman/pkg",
+                                "name": "@pkg"
+                            }
+                        ],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "obj_id": "909fc80e-25c2-4310-9403-097f4619d9d4",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 159985434624
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "disk_encryption": {
+            "encryption_type": "luks",
+            "lvm_volumes": [],
+            "partitions": [
+                "909fc80e-25c2-4310-9403-097f4619d9d4"
+            ]
+        }
+    },
 ```
+
+> [!TIP]
+> Remove the line(s) in 'device_modifications' specifying the disk/device to use: "device": "/dev/sda".
+> Doing so will force 'archinstall' to ask the user what drive to use during installation.
+
+
+> [!TIP]
+> Remove all lines specifiying 'dev_path':
+>   "dev_path": null,
+> This will cause the installer to ask the user to specify the partition to use during installation.
+
+
 
 ## Usage (with configuration files)
 
