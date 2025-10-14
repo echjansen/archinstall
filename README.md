@@ -1,16 +1,14 @@
-# archinstall
+# Archinstall
 Installing Arch Linux using the live ISO provided 'archinstall' package
-
-Personal `archinstall` configuration for installing archlinux in multiple environments: 'laptop' and 'workstation' at the time I wrote this `README.md` file.
 
 Used with `archinstall`'s *guided* installation script. See [Guided Installation](https://archinstall.archlinux.page/installing/guided.html#guided-installation) for detailed explanation of how to make and use configuration files.
 
-## How to make configuration files
+## How to create the 'base' configuration files
 
-1. In Archlinux, install the `archinstall` package:
+1. In an existing Archlinux system, install the `archinstall` package:
 
 ```bash
-sudo pacman -S archinstall
+sudo pacman -S archinstall --advanced --verbose --offline --dry-run
 ```
 
 2. Run `archinstall` *with root privileges* and *with `--dry-run` option*(in safe mode).
@@ -18,14 +16,47 @@ sudo pacman -S archinstall
 ```bash
 sudo archinstall --dry-run
 ```
-3. Set installation options to your preferences.
-4. `Save configuration` to your location.
+
+3. Set the installation options to your preferences.
+
+4. `Save configuration` to a directory of your choice.
 
 > [!TIP]
 > 'Save configuration' will ask for a directory to save the configuration files. This is more complicated when using the 'archinstall' on a live ISO as there is no mounted directories to save the configuration to. Running 'Save configuration' on an already installed Arch Linux operating system allows you to save in any existing (persistent) directory. Do note you will likely need to change the permission of the saved files with 'chown'.
 
+## Modifying the 'base' configuration files.
+
+> [!CAUTION]
+> The user_crendetial.json file will save your disk encryption password in plain text.
+> There is no possibility to hash the LUKS password in the user_credential.json file.
+> Therefor it is best to change the xxx to an empty string, so that the 'archinstll' will prompt you for a LUKS password during installation.
+
+Example of user_credentials:
+```json
+{
+    "encryption_password": "",
+    "root_enc_password": "$y$j9T$KjiKr/CTRnfZtPi363mck0$HXzYkWNXAcMBmwbENu/JNmrHV.yWqErGn74dhKlffk8",
+    "users": [
+        {
+            "enc_password": "$y$j9T$wv9tyZmU4aYBVgkAvvtyS.$w.t2UVFnvhiA2gT9C7pplcF2B.tHz18UzI5TGq1BGtA",
+            "groups": [],
+            "sudo": true,
+            "username": "linus"
+        }
+    ]
+}
+```
+
+The user_configuration.json file saved during the first step is a representation of that specific installation.
+
+```json
+
+```
+
 ## Usage (with configuration files)
+
 1. Boot with Archlinux ISO Image.
+
 2. Prepare configuration files. You could use them from previous steps, but since I uploaded them here, I'd download them via `curl`(FYI: Archlinux ISO image does *not* contain `wget` or `git`), e.g.:
 
 ```bash
