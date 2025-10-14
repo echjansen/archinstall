@@ -21,6 +21,9 @@ sudo archinstall --dry-run
 3. Set installation options to your preferences.
 4. `Save configuration` to your location.
 
+> [!TIP]
+> 'Save configuration' will ask for a directory to save the configuration files. This is more complicated when using the 'archinstall' on a live ISO as there is no mounted directories to save the configuration to. Running 'Save configuration' on an already installed Arch Linux operating system allows you to save in any existing (persistent) directory. Do note you will likely need to change the permission of the saved files with 'chown'.
+
 ## Usage (with configuration files)
 1. Boot with Archlinux ISO Image.
 2. Prepare configuration files. You could use them from previous steps, but since I uploaded them here, I'd download them via `curl`(FYI: Archlinux ISO image does *not* contain `wget` or `git`), e.g.:
