@@ -1,0 +1,127 @@
+{
+    "app_config": {
+        "audio_config": {
+            "audio": "pipewire"
+        },
+        "bluetooth_config": {
+            "enabled": true
+        }
+    },
+    "archinstall-language": "English",
+    "auth_config": {},
+    "bootloader": "Systemd-boot",
+    "custom_commands": [],
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": {
+                "type": "Timeshift"
+            }
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "size": {
+                            "unit": "MiB",
+                            "value": 512
+                        },
+                        "start": {
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [
+                            { "mountpoint": "/", "name": "@" },
+                            { "mountpoint": "/home", "name": "@home" }
+                            { "mountpoint": "/.swap", "name": "@swap" }
+                            { "mountpoint": "/.snapshots", "name": "@snapshots" }
+                            { "mountpoint": "/home/.snapshots", "name": "@home-snapshots" }
+                            { "mountpoint": "/var", "name": "@var" }
+                            { "mountpoint": "/var/tmp", "name": "@var-tmp" }
+                            { "mountpoint": "/var/log", "name": "@hvar-log" }
+                            { "mountpoint": "/var/lib/libvirt", "name": "@libvirt" }
+                            { "mountpoint": "/var/lib/docker", "name": "@docker" }
+                            { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" }
+                        ],
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "size": {
+                            "unit": "B",
+                            "value": 0
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "disk_encryption": {
+            "encryption_type": "luks",
+            "lvm_volumes": [],
+            "partitions": [
+                "1"
+            ]
+        }
+    },
+    "hostname": "archlinux",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US.UTF-8"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {
+            "Local": [
+                "https://mirror.aarnet.edu.au/pub/archlinux/$repo/os/$arch",
+                "https://archlinux.mirror.digitalpacific.com.au/$repo/os/$arch",
+                "https://au.arch.niranjan.co/$repo/os/$arch",
+                "https://au.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "https://sydney.mirror.pkgbuild.com/$repo/os/$arch",
+                "https://syd.mirror.rackspace.com/archlinux/$repo/os/$arch"
+            ]
+        },
+        "optional_repositories": []
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [],
+    "parallel_downloads": 10,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "script": null,
+    "services": [],
+    "swap": true,
+    "timezone": "Australia/Victoria",
+    "version": "3.0.11"
+}
