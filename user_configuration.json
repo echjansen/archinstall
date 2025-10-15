@@ -9,7 +9,9 @@
     },
     "archinstall-language": "English",
     "auth_config": {},
+    "boot_vfat_mount_point": "/boot",
     "bootloader": "Systemd-boot",
+    "unified_kernel_image": true,
     "custom_commands": [],
     "disk_config": {
         "btrfs_options": {
@@ -84,7 +86,6 @@
     "kernels": [
         "linux"
     ],
-    "unified_kernel_image": true,
     "locale_config": {
         "kb_layout": "us",
         "sys_enc": "UTF-8",
