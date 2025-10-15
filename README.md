@@ -187,11 +187,6 @@ Example section for 'disk_config' direct from a 'saved' configuration:
 > Change the "disk_config.config_type" from "default_layout" to "manual_partitioning"
 > If config_type is "default_layout" any provided disk configuration will be ignored and must be 'selected' by the user during installation.
 
-#### "disk_config.device_modifications.device"
-> [!TIP]
-> Remove the line(s) in 'device_modifications' specifying the disk/device to use: "device": "/dev/sda".
-> Doing so will force 'archinstall' to ask the user what device / drive to use during the installation process.
-
 #### "disk_config.device_modifications.partitions.dev_path"
 > [!TIP]
 > Remove the line(s) in "disk_config.device_modifications.partitions" specifying "dev_path".
