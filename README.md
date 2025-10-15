@@ -203,6 +203,93 @@ Example section for 'disk_config' direct from a 'saved' configuration:
 > Specify the size with "size": { "unit": "MiB", "value": 512 }
 > Specify the remaining size with "size": { "unit": "B", "value": 0 }, where 0 results in remaining disk capacity.
 
+Example of sizing EFI and ROOT partitions:
+```json
+"device_modifications": [
+    {
+        "partitions": [
+            {
+                // Partition 0: EFI/boot (512 MiB)
+                "flags": [
+                    "boot",
+                    "esp"
+                ],
+                "fs_type": "fat32",
+                "mountpoint": "/boot",
+                "size": {
+                    "unit": "MiB",
+                    "value": 512
+                },
+                "start": {
+                    "unit": "MiB",
+                    "value": 1
+                },
+                "status": "create",
+                "type": "primary"
+            },
+            {
+                // Partition 1: BTRFS (Remaining Space)
+                "btrfs": [
+                    { "mountpoint": "/", "name": "@" },
+                    { "mountpoint": "/home", "name": "@home" }
+                    // Add any other subvolumes you need here
+                ],
+                "flags": [],
+                "fs_type": "btrfs",
+                "mount_options": [
+                    "compress=zstd"
+                ],
+                "mountpoint": null,
+                "size": {
+                    "unit": "B",
+                    "value": 0 // <-- This is the key: 0 uses all remaining disk space
+                },
+                "status": "create",
+                "type": "primary"
+            }
+        ],
+        "wipe": true
+    }
+]
+```
+
+#### "disk_config.partitions.btrfs"
+The default btrfs scheme used in 'archinstall' is a simplified version of what is generally usefull in Arch Linux.
+Below is a configuration taking advantage of the BTRFS capabilities:
+
+```bash
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@swap
+btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@home-snapshots
+btrfs subvolume create /mnt/@libvirt
+btrfs subvolume create /mnt/@docker
+btrfs subvolume create /mnt/@cache-pacman-pkgs
+btrfs subvolume create /mnt/@var
+btrfs subvolume create /mnt/@var-log
+btrfs subvolume create /mnt/@var-tmp
+```
+
+Which translates in user_configuration.json to:
+
+```json
+"btrfs": [
+    { "mountpoint": "/", "name": "@" },
+    { "mountpoint": "/home", "name": "@home" }
+    { "mountpoint": "/.swap", "name": "@swap" }
+    { "mountpoint": "/.snapshots", "name": "@snapshots" }
+    { "mountpoint": "/home/.snapshots", "name": "@home-snapshots" }
+    { "mountpoint": "/var", "name": "@var" }
+    { "mountpoint": "/var/tmp", "name": "@var-tmp" }
+    { "mountpoint": "/var/log", "name": "@hvar-log" }
+    { "mountpoint": "/var/lib/libvirt", "name": "@libvirt" }
+    { "mountpoint": "/var/lib/docker", "name": "@docker" }
+    { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" }
+],
+
+```
+
 #### "disk_config.disk_encryption.partitions"
 Because 'disk_id' are removed from the user_configuration, the partitions that require to be encrypted need to be chnaged too.
 partitions are created in order as they occur in the user_configuration file, starting with 0 for the fist partition.
