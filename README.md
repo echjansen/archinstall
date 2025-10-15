@@ -184,7 +184,7 @@ Example section for 'disk_config' direct from a 'saved' configuration:
 
 #### "disk_config.config_type"
 > [!TIP]
-> Change the "disk_config.config_type" from "default_layout" to "manual"
+> Change the "disk_config.config_type" from "default_layout" to "manual_partitioning"
 > If config_type is "default_layout" any provided disk configuration will be ignored and must be 'selected' by the user during installation.
 
 #### "disk_config.device_modifications.device"
