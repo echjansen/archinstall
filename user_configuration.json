@@ -34,10 +34,18 @@
                         "mount_options": [],
                         "mountpoint": "/boot",
                         "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
                             "unit": "MiB",
                             "value": 512
                         },
                         "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
                             "unit": "MiB",
                             "value": 1
                         },
@@ -65,6 +73,10 @@
                         ],
                         "mountpoint": null,
                         "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
                             "unit": "B",
                             "value": 0
                         },
