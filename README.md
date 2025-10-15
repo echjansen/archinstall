@@ -182,6 +182,11 @@ Example section for 'disk_config' direct from a 'saved' configuration:
     },
 ```
 
+#### "disk_config.config_type"
+> [!TIP]
+> Change the "disk_config.config_type" from "default_layout" to "manual"
+> If config_type is "default_layout" any provided disk configuration will be ignored and must be 'selected' by the user during installation.
+
 #### "disk_config.device_modifications.device"
 > [!TIP]
 > Remove the line(s) in 'device_modifications' specifying the disk/device to use: "device": "/dev/sda".

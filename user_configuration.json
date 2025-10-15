@@ -17,7 +17,7 @@
                 "type": "Timeshift"
             }
         },
-        "config_type": "default_layout",
+        "config_type": "manual",
         "device_modifications": [
             {
                 "partitions": [
