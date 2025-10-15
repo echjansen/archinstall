@@ -27,6 +27,7 @@
                     {
                         "btrfs": [],
                         "dev_path": null,
+                        "obj_id": null,
                         "flags": [
                             "boot",
                             "esp"
@@ -68,6 +69,7 @@
                           { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" }
                         ],
                         "dev_path": null,
+                        "obj_id": null,
                         "flags": [],
                         "fs_type": "btrfs",
                         "mount_options": [
