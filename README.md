@@ -182,16 +182,57 @@ Example section for 'disk_config' direct from a 'saved' configuration:
     },
 ```
 
+#### "disk_config.device_modifications.device"
 > [!TIP]
 > Remove the line(s) in 'device_modifications' specifying the disk/device to use: "device": "/dev/sda".
-> Doing so will force 'archinstall' to ask the user what drive to use during installation.
+> Doing so will force 'archinstall' to ask the user what device / drive to use during the installation process.
 
-
+#### "disk_config.device_modifications.partitions.dev_path"
 > [!TIP]
-> Remove all lines specifiying 'dev_path':
->   "dev_path": null,
-> This will cause the installer to ask the user to specify the partition to use during installation.
+> Remove the line(s) in "disk_config.device_modifications.partitions" specifying "dev_path".
+> This will cause the installer to create partitions in order of ocurance in the user_configuration.json file.
 
+#### "disk_config.device_modifications.partitons.obj_id"
+> [!TIP]
+> Remove the line(s) in "disk_config.device_modifications.partitions" specifying "obj_id".
+> This will indicate 'archinstall' that it is a new installation, and the partition(s) will need to be created newly.
+
+#### "disk_config.device_modifications.partitions.size"
+> [!TIP]
+> Simplify and remove clutter surrounding the partitions size configuration.
+> Specify the size with "size": { "unit": "MiB", "value": 512 }
+> Specify the remaining size with "size": { "unit": "B", "value": 0 }, where 0 results in remaining disk capacity.
+
+#### "disk_config.disk_encryption.partitions"
+Because 'disk_id' are removed from the user_configuration, the partitions that require to be encrypted need to be chnaged too.
+partitions are created in order as they occur in the user_configuration file, starting with 0 for the fist partition.
+Therefor change the "partitons" to the partition number instead of the disk_id.
+
+```json
+"device_modifications": [
+    {
+        // NO "device": "/dev/sda" ENTRY HERE
+        "partitions": [
+            {
+                // Partition 0 (EFI)
+                // ... partition details ...
+            },
+            {
+                // Partition 1 (BTRFS/LUKS)
+                // ... partition details ...
+            }
+        ],
+        "wipe": true
+    }
+],
+"disk_encryption": {
+    "encryption_type": "luks",
+    "lvm_volumes": [],
+    "partitions": [
+        "1" // Refers to Partition 1 in the list above
+    ]
+}
+```
 
 
 ## Usage (with configuration files)
