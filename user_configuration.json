@@ -26,6 +26,7 @@
                 "partitions": [
                     {
                         "btrfs": [],
+                        "dev_path": null,
                         "flags": [
                             "boot",
                             "esp"
@@ -66,6 +67,7 @@
                           { "mountpoint": "/var/lib/docker", "name": "@docker" },
                           { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" }
                         ],
+                        "dev_path": null,
                         "flags": [],
                         "fs_type": "btrfs",
                         "mount_options": [
