@@ -42,18 +42,18 @@
                         "type": "primary"
                     },
                     {
-                        "btrfs": [
-                            { "mountpoint": "/", "name": "@" },
-                            { "mountpoint": "/home", "name": "@home" }
-                            { "mountpoint": "/.swap", "name": "@swap" }
-                            { "mountpoint": "/.snapshots", "name": "@snapshots" }
-                            { "mountpoint": "/home/.snapshots", "name": "@home-snapshots" }
-                            { "mountpoint": "/var", "name": "@var" }
-                            { "mountpoint": "/var/tmp", "name": "@var-tmp" }
-                            { "mountpoint": "/var/log", "name": "@hvar-log" }
-                            { "mountpoint": "/var/lib/libvirt", "name": "@libvirt" }
-                            { "mountpoint": "/var/lib/docker", "name": "@docker" }
-                            { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" }
+                      "btrfs": [
+                          { "mountpoint": "/", "name": "@" },
+                          { "mountpoint": "/home", "name": "@home" },
+                          { "mountpoint": "/.swap", "name": "@swap" },
+                          { "mountpoint": "/.snapshots", "name": "@snapshots" },
+                          { "mountpoint": "/home/.snapshots", "name": "@home-snapshots" },
+                          { "mountpoint": "/var", "name": "@var" },
+                          { "mountpoint": "/var/tmp", "name": "@var-tmp" },
+                          { "mountpoint": "/var/log", "name": "@hvar-log" },
+                          { "mountpoint": "/var/lib/libvirt", "name": "@libvirt" },
+                          { "mountpoint": "/var/lib/docker", "name": "@docker" },
+                          { "mountpoint": "/var/cache/pacman/pkgs", "name": "@cache-pacman-pkg" },
                         ],
                         "flags": [],
                         "fs_type": "btrfs",
