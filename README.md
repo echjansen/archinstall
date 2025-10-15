@@ -348,3 +348,11 @@ archinstall --config <your_link_to_configuration_file> --creds <your_link_to_cre
 ```
 
 4. Confirm loaded configurations and proceed to installation if all seems to be ready.
+
+> [!TIP]
+> If you have checked the files prior, you can start the installation process immediately with the following command:
+> Ensure though that the supplied configuration is correct by checking it at least once.
+
+```bash
+archinstall --silent --config <your_link_to_configuration_file> --creds <your_link_to_credentials_file>
+```
